@@ -1,0 +1,7 @@
+include ./translationList
+
+html
+  include ./includes/head.pug
+  body
+    include ./includes/nav.pug
+    +translationList("faq", translations)

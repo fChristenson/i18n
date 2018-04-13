@@ -1,0 +1,13 @@
+html
+  include ./includes/head.pug
+  body
+    include ./includes/nav.pug
+    div
+      h2 Create translation
+      form(method="post", action="/save")
+        select
+          option(id="home") Home
+          option(id="faq") faq
+        input(type="text", placeholder="label")
+        input(type="text", placeholder="Text")
+        input(type="submit", value="Save")

@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 12px;
+  background: steelblue;
+  color: whitesmoke;
+}
+
+a {
+  color: gold;
+}
+
+nav ul {
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+ul {
+  list-style: none;
+}
+
+div {
+  max-width: 410px;
+  margin: 20vh auto;
+}
+
+h2 {
+  text-align: center;
+  padding: 8px;
+}
+
+input {
+  margin: 0 8px;
+}

@@ -1,0 +1,5 @@
+mixin translationList(page, translations)
+  ul
+    each val in translations
+      li
+        a(href=`/translate/label?page=${page}&label=${val}`)= val
