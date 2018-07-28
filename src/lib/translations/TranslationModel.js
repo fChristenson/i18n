@@ -1,10 +1,10 @@
-const Schema = require("mongoose").Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const Translation = new Schema({
-  text: { type: String, default: "Missing" },
-  label: { type: String, required: true, index: { unique: true } },
+  label: { type: String, required: true },
   page: { type: String, required: true },
-  language: { type: String, enum: ["sv", "en", "es"], required: true }
+  translatedTexts: { type: Array, default: [] }
 });
 
-module.exports = Translation;
+module.exports = mongoose.model("Translation", Translation);

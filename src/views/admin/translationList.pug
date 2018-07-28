@@ -1,5 +1,7 @@
 mixin translationList(page, translations)
   ul
-    each val in translations
+    each translation in translations
       li
-        a(href=`/translate/label?page=${page}&label=${val}`)= val
+        a(href=`/translate/label?page=${page}&label=${translation.label}`)= translation.label
+        each text in translation.translatedTexts
+          span= text.language

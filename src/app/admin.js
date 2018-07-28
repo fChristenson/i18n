@@ -25,14 +25,25 @@ app.get("/translate/faq", async (req, res) => {
 
 app.get("/translate/label", async (req, res) => {
   const { page, label } = req.query;
-  const translations = await translationService.getTranslationsForLabel(
-    page,
-    label
-  );
+  const translations = await translationService.getTranslations(page, label);
   res.render("label", { translations });
 });
 
-app.post("/save", (req, res) => {
+app.get("/translate/label/remove", async (req, res) => {
+  const { page, label } = req.query;
+  await translationService.removeLabel(page, label);
+  res.redirect(`/translate/${page}`);
+});
+
+app.post("/save", async (req, res) => {
+  const { page, label, text, language } = req.body;
+
+  if (await translationService.translationsExist(page, label)) {
+    await translationService.updateTranslations(page, label, text, language);
+  } else {
+    await translationService.createTranslations(page, label, text, language);
+  }
+
   res.render("admin");
 });
 

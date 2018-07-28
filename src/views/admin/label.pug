@@ -1,6 +1,10 @@
 html
   include ./includes/head.pug
   body
+    include ./includes/nav.pug
+    h1
+      span(class="label")= translations.label
+      a(href=`/translate/label/remove?page=${translations.page}&label=${translations.label}`)= "remove"
     ul
-    each val in translations
-      li= val
+    each val in translations.translatedTexts
+      li= `${val.text} - ${val.language}`

@@ -26,8 +26,14 @@ ul {
 }
 
 div {
-  max-width: 410px;
+  max-width: 1024px;
   margin: 20vh auto;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: space-around;
 }
 
 h2 {
@@ -37,4 +43,12 @@ h2 {
 
 input {
   margin: 0 8px;
+}
+
+span {
+  padding-left: 8px;
+}
+
+.label {
+  padding-right: 8px;
 }

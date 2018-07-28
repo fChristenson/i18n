@@ -5,9 +5,12 @@ html
     div
       h2 Create translation
       form(method="post", action="/save")
-        select
-          option(id="home") Home
-          option(id="faq") faq
-        input(type="text", placeholder="label")
-        input(type="text", placeholder="Text")
+        select(name="page")
+          option(id="home", value="home") Home
+          option(id="faq", value="faq") faq
+        input(type="text", name="label", placeholder="label")
+        input(type="text", name="text", placeholder="text")
+        select(name="language")
+          option(id="sv") sv
+          option(id="en") en
         input(type="submit", value="Save")
