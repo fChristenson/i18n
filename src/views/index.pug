@@ -1,7 +1,13 @@
+include ./textUnit.pug
+include ./includes/languages.pug
+
 html
   include ./includes/head.pug
   body
-    h1 This is my app
-    p This text is translated!
-    p This text is not translated!
+    nav(class="nav")
+      +languages("/", languages, selectedLanguage)
+    h1
+      +textUnit(translations.title, 'title')
+    p
+      +textUnit(translations.description, 'description')
     a(href="/faq") FAQ

@@ -1,0 +1,4 @@
+mixin languages(route, languages, selectedLanguage)
+  select(onchange="location = this.value")
+    each language in languages
+      option(value=`${route}?lang=${language}`, selected=selectedLanguage === language)= language

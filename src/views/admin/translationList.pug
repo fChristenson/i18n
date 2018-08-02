@@ -4,4 +4,4 @@ mixin translationList(page, translations)
       li
         a(href=`/translate/label?page=${page}&label=${translation.label}`)= translation.label
         each text in translation.translatedTexts
-          span= text.language
+          span(class="lang-span")= text.language

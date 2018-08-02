@@ -14,3 +14,9 @@ html
           option(id="sv") sv
           option(id="en") en
         input(type="submit", value="Save")
+      h2(class="missing") Missing translations
+      ul
+        each translation in missingTranslations
+          li(class="missing-li")
+            span= `${translation.page} - `
+            a(href=`/translate/label?page=${translation.page}&label=${translation.label}`)= translation.label

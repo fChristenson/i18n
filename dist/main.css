@@ -41,11 +41,28 @@ h2 {
   padding: 8px;
 }
 
+.nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.missing {
+  margin-top: 32px;
+}
+
+.missing-li {
+  text-align: center;
+}
+
+.language {
+  padding-right: 8px;
+}
+
 input {
   margin: 0 8px;
 }
 
-span {
+.lang-span {
   padding-left: 8px;
 }
 

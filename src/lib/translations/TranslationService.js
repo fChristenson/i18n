@@ -10,7 +10,18 @@ class TranslationService {
     this.getTranslationsForPage = this.getTranslationsForPage.bind(this);
     this.removeLabel = this.removeLabel.bind(this);
     this.translationsExist = this.translationsExist.bind(this);
+    this.getMissingTranslations = this.getMissingTranslations.bind(this);
+    this.getLabelsForPage = this.getLabelsForPage.bind(this);
     this._createPlaceholderTexts = this._createPlaceholderTexts.bind(this);
+  }
+
+  async getMissingTranslations() {
+    const allTranslations = await this.TranslationModel.find({});
+    return allTranslations.filter(translations => {
+      return translations.translatedTexts.some(translatedText => {
+        return translatedText.text === "MISSING";
+      });
+    });
   }
 
   removeLabel(page, label) {
@@ -59,6 +70,19 @@ class TranslationService {
 
   getTranslationsForPage(page) {
     return this.TranslationModel.find({ page });
+  }
+
+  async getLabelsForPage(page, language = "sv") {
+    const translations = await this.TranslationModel.find({ page });
+    const labels = translations.reduce((acc, translations) => {
+      const maybeText = translations.translatedTexts.find(
+        translatedText => translatedText.language === language
+      );
+      acc[translations.label] = maybeText.text;
+      return acc;
+    }, {});
+
+    return labels;
   }
 }
 

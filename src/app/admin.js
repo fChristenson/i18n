@@ -1,16 +1,16 @@
 const express = require("express");
 const path = require("path");
-const bodyParser = require("body-parser");
 const app = express();
 const translationService = require("../lib/translations");
 
 app.use(express.static(path.resolve(__dirname, "..", "..", "dist")));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "pug");
 app.set("views", path.resolve(__dirname, "..", "views", "admin"));
 
-app.get("/", (req, res) => {
-  res.render("admin");
+app.get("/", async (req, res) => {
+  const missingTranslations = await translationService.getMissingTranslations();
+  res.render("admin", { missingTranslations });
 });
 
 app.get("/translate/home", async (req, res) => {
@@ -44,7 +44,7 @@ app.post("/save", async (req, res) => {
     await translationService.createTranslations(page, label, text, language);
   }
 
-  res.render("admin");
+  res.redirect("/");
 });
 
 module.exports = app;
