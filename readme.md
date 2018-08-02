@@ -35,6 +35,9 @@ Does it stop there? No!
 What about money, the format of your currency, the time and date format,
 which calendar is the region you are in using? Timezones?
 
+Are there laws that forces you to create features for some countries
+but not for others?
+
 How about the meaning of words in different languages and knowing when
 you can use the same word for something or when you need different words
 for each country, which changes the semantic meaning of the information?
